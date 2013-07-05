@@ -3,10 +3,10 @@ require "mongoid"
 require "evolver/extensions"
 require "evolver/loggable"
 require "evolver/migrator"
-require "evolver/railtie"
 require "evolver/sessions"
 require "evolver/version"
-require "rails/generators/evolver"
+require "evolver/configuration"
+
 
 module Evolver
   include Loggable
@@ -81,7 +81,7 @@ module Evolver
   #
   # @since 0.0.0
   def migrations_path
-    File.join(Rails.root, "db/evolver/migrations")
+    Evolver.configuration.migrations_path
   end
 
   # Get evolver's registry of migration metadata.
